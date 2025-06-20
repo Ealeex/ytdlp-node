@@ -3,12 +3,17 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Wraps the YT-DLP script.",
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "yt-dlp": "./bin/yt-dlp.exe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ealeex/ytdlp-node.git"
   },
   "keywords": [],
   "author": "Ethan Lee",
