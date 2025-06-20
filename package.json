@@ -1,5 +1,5 @@
 {
-  "name": "ytdlp-node",
+  "name": "@ealeex/ytdlp-node",
   "type": "module",
   "version": "1.0.0",
   "description": "Wraps the YT-DLP script.",
