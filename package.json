@@ -11,6 +11,10 @@
   "bin": {
     "yt-dlp": "./bin/yt-dlp.exe"
   },
+  "files": [
+    "dist",
+    "bin"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Ealeex/ytdlp-node.git"
