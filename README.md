@@ -1,10 +1,12 @@
 # ytdlp-node
 
-Wraps the YT-DLP script for Node.js projects. This package provides a simple way to use the yt-dlp executable from Node.js or by calling the included binary directly.
+A Node.js wrapper for the YT-DLP executable, providing a simple TypeScript/JavaScript API to download audio and video using the bundled `yt-dlp.exe` binary.
 
 ## Features
-- Bundles the `yt-dlp.exe` binary for Windows
-- TypeScript support for programmatic usage
+- Programmatic access to yt-dlp from Node.js
+- Supports audio, video, and DASH downloads
+- Customizable output directory, format, and playlist selection
+- TypeScript types included
 
 ## Installation
 
@@ -14,27 +16,43 @@ npm install @ealeex/ytdlp-node
 
 ## Usage
 
-### Using the Bundled Binary
-After installing, you can find the `yt-dlp.exe` binary in the `bin` directory of the package. You can execute it directly:
-
-```
-./node_modules/@ealeex/ytdlp-node/bin/yt-dlp.exe [options] <url>
-```
-
-Or copy it to a location in your PATH for easier access.
-
-### Programmatic Usage
-You can spawn the binary from Node.js:
-
+### Basic Example
 ```js
-import { spawn } from 'child_process';
-const child = spawn('./node_modules/@ealeex/ytdlp-node/bin/yt-dlp.exe', ['<url>', '--option']);
-child.stdout.pipe(process.stdout);
+import YTDLP from '@ealeex/ytdlp-node';
+
+const result = await YTDLP.download({
+  url: 'https://www.youtube.com/watch?v=xxxxxxx',
+  format: YTDLP.Formats.MP3,
+  directory: './downloads',
+  nameOverride: 'my-audio-file.mp3',
+  logCommand: true
+});
+console.log('Downloaded to:', result);
+```
+
+### Options
+- `url`: Direct video URL to download
+- `search`: Search query (uses ytsearch)
+- `directory`: Output directory (created if missing)
+- `format`: Output format (see `YTDLP.Formats`)
+- `nameOverride`: Custom output filename
+- `playlistSelection`: Playlist items to download (e.g., `1,3,5-7`)
+- `logCommand`: Print the yt-dlp command before running
+
+### Formats
+- `YTDLP.Formats`: All supported formats (MP3, MP4, M4A, etc.)
+- `YTDLP.AudioFormats`: Audio-only formats
+- `YTDLP.VideoFormats`: Video-only formats
+- `YTDLP.DASHFormats`: DASH formats
+
+### Generate Help File
+```js
+YTDLP.generateHelpFile('./yt-dlp-help.txt');
 ```
 
 ## Project Structure
 - `bin/yt-dlp.exe`: Bundled yt-dlp binary
-- `src/index.ts`: TypeScript entry point
+- `src/index.ts`: TypeScript API
 - `dist/`: Compiled output
 
 ## Build
