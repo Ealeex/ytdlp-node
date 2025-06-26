@@ -1,15 +1,13 @@
 {
     "compilerOptions": {
-        "declaration": true,
-        "emitDeclarationOnly": false,
         "target": "es2020",
         "module": "es2020",
-        "rootDir": "src",
-        "outDir": "dist",
+        "rootDir": "testing",
+        "outDir": "testing",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true
     },
-    "include": ["src"]
+    "exclude": ["src"]
 }
